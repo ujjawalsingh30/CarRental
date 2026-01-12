@@ -141,11 +141,11 @@ const AddCar = () => {
             className='px-3 py-2 mt-1 border border-borderColor rounded-md outline-none' value={car.description} onChange={e => setCar({ ...car, description: e.target.value })}></textarea>
         </div>
 
-        <button>
-          <img src={assets.tick_icon} alt="" className='flex items-center gap-2 px-4 py-2.5 mt-4 bg-primary
-          text-white rounded-md font-medium w-max cursor-pointer'/>
-          List Your Car
-        </button>
+        <button className='flex items-center gap-2 px-4 py-2.5 mt-4 bg-primary
+          text-white rounded-md font-medium w-max cursor-pointer'>
+          <img src={assets.tick_icon} alt="" /> List Your Car </button>
+         
+       
 
       </form>
     </div>
