@@ -1,6 +1,7 @@
 import User from "../models/User.js"
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
+import Car from "../models/Car.js";
 
 
 // Generate JWT Token
@@ -45,31 +46,43 @@ export const registerUser = async (req, res) => {
 // Login User
 export const loginUser = async (req, res) => {
     try {
-        const {email, password} = req.body
-        const user = await User.findOne({email})
-            if(!user){
-                return  res.json({success: false, message: "User not found"})
-            }
+        const { email, password } = req.body
+        const user = await User.findOne({ email })
+        if (!user) {
+            return res.json({ success: false, message: "User not found" })
+        }
         const isMatch = await bcrypt.compare(password, user.password)
-        if(!isMatch){
-            return res.json({success: false, message: "Invalid Credentials "})
+        if (!isMatch) {
+            return res.json({ success: false, message: "Invalid Credentials " })
         }
         const token = generateToken(user._id.toString())
-        res.json({success: true, token})
+        res.json({ success: true, token })
     } catch (error) {
         console.log(error.message);
-        res.json({success: false, message: error.message})
+        res.json({ success: false, message: error.message })
     }
 }
 
 
 // Get User data using Token (JWT)
-export const getUserData = async (req, res)=>{
+export const getUserData = async (req, res) => {
     try {
-        const {user} = req;
-        res.json({success: true, data: user})
+        const { user } = req;
+        res.json({ success: true, data: user })
     } catch (error) {
-          console.log(error.message);
-        res.json({success: false, message: error.message})
+        console.log(error.message);
+        res.json({ success: false, message: error.message })
+    }
+}
+
+
+// Get All Cars for the Frontend
+export const getCars = async (req, res) => {
+    try {
+        const cars = await Car.find({ isAvalible: true })
+        res.json({ success: true, cars })
+    } catch (error) {
+        console.log(error.message);
+        res.json({ success: false, message: error.message })
     }
 }
