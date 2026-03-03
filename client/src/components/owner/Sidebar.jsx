@@ -1,16 +1,32 @@
 import React, { useState } from 'react'
-import { assets, dummyUserData, ownerMenuLinks } from '../../assets/assets'
+import { assets, ownerMenuLinks } from '../../assets/assets'
 import { NavLink, useLocation } from 'react-router-dom';
+import { useAppContext } from '../../context/AppContext';
+import toast from 'react-hot-toast';
 
 const Sidebar = () => {
 
-    const user = dummyUserData;
+    const { user, axios, fetchUser } = useAppContext()
     const location = useLocation()
     const [image, setImage] = useState('')
 
     const updateImage = async () => {
-        user.image = URL.createObjectURL(image)
-        setImage('')
+        try {
+            const formData = new FormData()
+            formData.append('image', image)
+
+            const { data } = await axios.post('/api/owner/update-image', formData)
+
+            if (data.success) {
+                fetchUser()
+                toast.success(data.message)
+                setImage('')
+            } else {
+                toast.error(data.message)
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
     }
 
     return (
@@ -19,9 +35,20 @@ const Sidebar = () => {
 
             <div className='group relative'>
                 <label htmlFor="image">
-                    <img src={image ? URL.createObjectURL(image) : user?.image ||
+                    {/* <img src={image ? URL.createObjectURL(image) : user?.image ||
                         "http://image.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=00"}
-                        alt="" className='h-9 md:h-14 w-9 md:w-14 rounded-full mx-auto' />
+                        alt="profile image" className='h-9 md:h-14 w-9 md:w-14 rounded-full mx-auto' /> */}
+
+                        <img 
+  src={
+    image 
+      ? URL.createObjectURL(image) 
+      : user?.image || "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
+  }
+  alt="profile"
+  className='h-9 md:h-14 w-9 md:w-14 rounded-full mx-auto' 
+/>
+                   
                     <input type="file" id="image" accept="image/*" hidden onChange={e =>
                         setImage(e.target.files[0])} />
 
@@ -35,8 +62,8 @@ const Sidebar = () => {
             </div>
             {image && (
                 <button className='absolute top-0 right-0 flex p-2 gap-1 bg-primary/10
-                text-primary cursor-pointer'>
-                    Save <img src={assets.check_icon} width={13} alt="" onClick={updateImage} />
+                text-primary cursor-pointer' onClick={updateImage}>
+                    Save <img src={assets.check_icon} width={13} alt="" />
                 </button>
             )}
             <p className='mt-2 text-base max-md:hidden'>{user?.name}</p>
