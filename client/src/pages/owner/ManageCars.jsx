@@ -16,7 +16,8 @@ const ManageCars = () => {
   try {
     const {data} = await axios.get('/api/owner/cars')
     if(data.success){
-      setCars(data.car)
+      // setCars(data.car)
+      setCars(data.cars)
     }else{
       toast.error(data.message)
     }

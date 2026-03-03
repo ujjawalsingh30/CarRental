@@ -1,4 +1,5 @@
 import imagekit from "../configs/imageKit.js";
+import Booking from "../models/Booking.js";
 import Car from "../models/Car.js";
 import User from "../models/User.js"
 import fs from 'fs';
@@ -143,5 +144,24 @@ export const updateUserImage = async (req, res)=>{
         res.json({success: false, message: error.message})
 
         
+    }
+}
+
+
+
+
+
+
+
+
+//   API to lst Owner Cars
+export const getOwnerCars = async (req, res)=>{
+    try{
+        const {_id} = req.user;
+        const cars = await Car.find({owner:_id})
+        res.json({success: true, cars})
+    }catch(error){
+        console.log(error.message);
+        res.json({success:false, message: error.message})
     }
 }
