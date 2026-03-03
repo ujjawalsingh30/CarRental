@@ -26,6 +26,16 @@ const Cars = () => {
       setFilteredCars(cars)
       return null
     }
+  
+
+  const filtered = cars.slice().filter((car)=>{
+    return car.brand.toLowerCase().includes(input.toLowerCase())
+    || car.model.toLowerCase().includes(input.toLowerCase())
+    || car.category.toLowerCase().includes(input.toLowerCase())
+    || car.transmission.toLowerCase().includes(input.toLowerCase())
+    
+  })
+  setFilteredCars(filtered)
   }
 
   const searchCarAvailablity = async () => {
@@ -45,6 +55,7 @@ const Cars = () => {
   useEffect(() => {
     cars.length > 0 && !isSearchData && applyFilter()
   }, [input, cars])
+
 
   return (
     <div>
