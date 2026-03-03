@@ -14,6 +14,7 @@ const AddCar = () => {
   const [car, setCar] = useState({
     brand: '',
     model: '',
+    year: '',
     pricePerDay: 0,
     category: '',
     transmission: '',
@@ -57,7 +58,7 @@ const AddCar = () => {
       }
     } catch (error) {
       toast.error(error.message)
-    }finally{
+    } finally {
       setIsLoading(false)
     }
   }
@@ -173,7 +174,8 @@ const AddCar = () => {
         {/* Car Description */}
         <div className='flex flex-col w-full'>
           <label>Description </label>
-          <textarea rows={5} input placeholder="e.g. A luxurious SUV with a spacious interior  and a powerfull engine." required
+          {/* <textarea rows={5} input placeholder="e.g. A luxurious SUV with a spacious interior  and a powerfull engine." required */}
+          <textarea rows={5} placeholder="e.g. A luxurious SUV with a spacious interior  and a powerfull engine." required
 
             className='px-3 py-2 mt-1 border border-borderColor rounded-md outline-none' value={car.description} onChange={e => setCar({ ...car, description: e.target.value })}></textarea>
         </div>
