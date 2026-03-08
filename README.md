@@ -259,5 +259,5 @@ Secure checkout interface allowing users to enter contact details and complete p
 
 ## 🏁 Conclusion
 
-**GreenCart** is a production-style e-commerce application showcasing **authentication, payments, image uploads, and secure APIs** using the MERN stack.
+**CarRental** is a production-style vehicle booking platform built with the MERN stack, featuring user authentication, car management, booking functionality, and secure backend APIs.
 
