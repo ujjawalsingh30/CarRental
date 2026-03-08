@@ -3,7 +3,7 @@
 # 🚗 Car Rental Website (MERN Stack)
 
 <p align="center">
-  <img src="client/public/a1.png" alt="Prescripto Homepage Screenshot" />
+  <img src="./client/public/home.png" alt="Car Rental Homepage Screenshot" width="800"/>
 </p>
 
 A full-stack ***Car Rental** Web Application built using the MERN Stack (MongoDB, Express.js, React.js, Node.js). This platform allows users to browse cars, book rentals, and manage bookings, while the admin can manage cars and reservations.
@@ -76,12 +76,6 @@ A full-stack ***Car Rental** Web Application built using the MERN Stack (MongoDB
 ## 📁 Project Structure
 
 ```
-
-├── screenshots/
-│   ├── home.png
-│   └── checkout.png
-│
-└── README.md
 
 carrental/
 │
@@ -227,32 +221,76 @@ npm run dev
 
 ## Project Screenshots
 
-🗂 Categories Section
+🗂 Cars
 
-Displays product categories like Organic Vegetables, Fresh Fruits, Dairy Products, Bakery, and Grains with attractive visuals for easy browsing.
+This page displays all available cars for rent in a card-based layout. Each card shows important details such as
+* Car brand and model
+* Rental price per day
+* Seating capacity
+* Transmission type
+* Fuel type
+* Location
 <p align="center">
-  <img src="client/public/a2.png" alt="Prescripto Homepage Screenshot" />
+  <img src="./client/public/cars.png" alt="Car Rental Homepage Screenshot" width="800"/>
+</p
+
+🛒 My-Booking
+
+The My Bookings page allows users to track all their reservations. It shows:
+* Booking ID
+* Rental period
+* Pickup location
+* Booking status (Pending / Confirmed / Cancelled)
+* Total price
+  This helps users easily manage and review their bookings.
+<p align="center">
+  <img src="./client/public/My-Booking.png" alt="Car Rental Homepage Screenshot" width="800"/>
 </p>
 
-🛒 All Products Page
+🛍 Admin-Dashboard
 
-A grid-based product listing showing item images, categories, ratings, discounted prices, and an “Add to Cart” option.
+The Admin Dashboard provides an overview of the platform's activity including:
+* Total number of cars
+* Total bookings
+* Pending requests
+* Confirmed bookings
+* Recent booking activities
+* Monthly revenue
+It helps administrators monitor platform performance efficiently.
 <p align="center">
-  <img src="client/public/a4.png" alt="Prescripto Homepage Screenshot" />
+  <img src="./client/public/Admin Dashboad.png" alt="Car Rental Homepage Screenshot" width="800"/>
 </p>
 
-🛍 Shopping Cart Page
 
-Shows selected products with quantity, subtotal, and remove options along with an order summary and payment method selection.
+
+➕ Add New Car
+
+Admins can add new vehicles to the platform by filling in detailed information such as:
+* Brand and model
+* Year of manufacture
+* Daily rental price
+* Transmission type
+* Fuel type
+* Seating capacity
+* Location
+* Vehicle description
+* Car image upload
+This ensures that all necessary vehicle details are available for customers.
 <p align="center">
-  <img src="client/public/a3.png" alt="Prescripto Homepage Screenshot" />
+  <img src="./client/public/Add Car.png" alt="Car Rental Homepage Screenshot" width="800"/>
 </p>
 
-💳 Checkout / Payment Page
 
-Secure checkout interface allowing users to enter contact details and complete payments using card or online payment options (test mode enabled).
+📋 Manage Bookings
+
+The Manage Bookings section allows administrators to control all customer reservations. Admins can:
+* View all booking records
+* Check payment status
+* Approve or cancel bookings
+* Update booking status
+This functionality ensures smooth booking management for the platform.
 <p align="center">
-  <img src="client/public/a5.png" alt="Prescripto Homepage Screenshot" />
+  <img src="./client/public/Managed-Booking.png" alt="Car Rental Homepage Screenshot" width="800"/>
 </p>
 
 ---
